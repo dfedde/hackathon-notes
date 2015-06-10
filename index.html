@@ -82,7 +82,7 @@ I got [a static site](link to sup terafirma) up and running
 
 
 Install clound foundry cli
-```
+```bash
 unzip cf.zip
 
 cd cf
@@ -92,31 +92,31 @@ cp cf /usr/bin
 
 
 Login to your cf instance
-```
+```bash
 cf login
 ```
 
 
 Move to the project folder
-```
+```bash
 cd project 
 ```
 
 
 Add a index.html file
-```
+```bash
 echo "<html><body><h1>sup,terafirma</h1></body></html>" > index.html
 ```
 
 
 Add Staticfile so it uses the correct build pack
-```
+```bash
 touch Staticfile
 ```
 
 
 Push it up to cf
-```
+```bash
 cf push my-site
 ```
 
@@ -126,7 +126,7 @@ cf push my-site
 
 
 thow up a local instance of concorse with vagrent
-```
+```bash
 vagrant init concourse/lite # places Vagrantfile in current directory
 vagrant up                  # downloads the box and spins up the VM
 ```
@@ -137,14 +137,14 @@ Navigate to http://192.168.100.4:8080
 
 Click the download link for the fly command
 and install the fly command
-```
+```bash
 chmod +x fly
 mv fly /usr/bin
 ```
 
 
 Create a pipleine file and uploade it to concorse
-```
+```bash
 fly c -c pipeline.yml
 ```
 
@@ -153,11 +153,11 @@ Then you are able to run any jobs in your pipeline file
 
 
 Inside a pipleine file you have:
-```
+```yaml
 resources:
 ```
 and 
-```
+```yaml
 jobs:
 ```
 
@@ -166,20 +166,32 @@ Resources are docker containers that can be used by jobs
 
 Jobs have tasks and resources
 Resources are split into 2 groups
-```
+``` yaml
 get: #resources the job needs
 ```
 
 and
 
-```
+```yaml
 put: #resources the job produces
 ```
 
 
 Tasks are can use resources 
 
-These are tings like run tests 
+These are things like run tests
+```yaml
+---
+platform: linux
+
+image: docker:///ubuntu#14.04
+
+inputs:
+- name: my-repo
+
+run:
+  path: my-repo/scripts/test
+```
 
           </script>
         </section>
