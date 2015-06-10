@@ -127,14 +127,27 @@ cf push my-site
 
 
 thow up a local instance of concorse with vagrent
+```
+vagrant init concourse/lite # places Vagrantfile in current directory
+vagrant up                  # downloads the box and spins up the VM
+```
 
 
-navigate to http://localhost:8080
+navigate to http://192.168.100.4:8080
+
+
 click the download link for the fly command
+and install the fly command
+```
+chmod +x fly
+mv fly /usr/bin
+```
 
 
-install the fly command
-
+create a pipleine file and uploade it to concorse
+```
+fly c -c pipeline file
+```
 
 
           </script>
