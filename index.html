@@ -58,30 +58,30 @@
 # react
 
 
-first opinions
+###first opinions
 > you got your xml in my javascript
 
 
 Read some documantation and walked through the [tutorial in the documantation](https://github.com/dfedde/react-notes/tree/master/exercise%201%20)
 
 
-could see why react was chosen for dynamic content
+Could see why react was chosen for dynamic content
 
 
 
 #cloud foundry
 
 
-apon mogans suggestion I took a look at cloud foundry
+Apon Mogan's suggestion I took a look at cloud foundry
 
 
-I got [this](link to sup terafirma) up and running
+I got [a static site](link to sup terafirma) up and running
 
 
 ## how I did it
 
 
-install clound foundry cli
+Install clound foundry cli
 ```
 unzip cf.zip
 
@@ -91,31 +91,31 @@ cp cf /usr/bin
 ```
 
 
-login to your cf instance
+Login to your cf instance
 ```
 cf login
 ```
 
 
-move to the project folder
+Move to the project folder
 ```
 cd project 
 ```
 
 
-add a index.html file
+Add a index.html file
 ```
 echo "<html><body><h1>sup,terafirma</h1></body></html>" > index.html
 ```
 
 
-add Staticfile so it uses the correct build pack
+Add Staticfile so it uses the correct build pack
 ```
 touch Staticfile
 ```
 
 
-push it up to cf
+Push it up to cf
 ```
 cf push my-site
 ```
@@ -132,10 +132,10 @@ vagrant up                  # downloads the box and spins up the VM
 ```
 
 
-navigate to http://192.168.100.4:8080
+Navigate to http://192.168.100.4:8080
 
 
-click the download link for the fly command
+Click the download link for the fly command
 and install the fly command
 ```
 chmod +x fly
@@ -143,13 +143,43 @@ mv fly /usr/bin
 ```
 
 
-create a pipleine file and uploade it to concorse
+Create a pipleine file and uploade it to concorse
 ```
 fly c -c pipeline.yml
 ```
 
+
 Then you are able to run any jobs in your pipeline file
 
+
+Inside a pipleine file you have:
+```
+resources:
+```
+and 
+```
+jobs:
+```
+
+Resources are docker containers that can be used by jobs
+
+
+Jobs have tasks and resources
+Resources are split into 2 groups
+```
+get: #resources the job needs
+```
+
+and
+
+```
+put: #resources the job produces
+```
+
+
+Tasks are can use resources 
+
+These are tings like run tests 
 
           </script>
         </section>
